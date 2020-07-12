@@ -34,9 +34,13 @@ public class PlayerStats : CharacterStats
     void Start()
     {
         EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
-        PrayerManager.instance.OnPrayerChanged += OnBonusChanged;
-        PrayerManager.instance.OnPrayerChangedRigour += OnBonusChangedRigour;
 
+        if(PrayerManager.instance != null)
+        {
+            PrayerManager.instance.OnPrayerChanged += OnBonusChanged;
+            PrayerManager.instance.OnPrayerChangedRigour += OnBonusChangedRigour;
+        }
+        
         activeProtect = PrayerProtectTypes.None;
 
         OnBonusChanged();

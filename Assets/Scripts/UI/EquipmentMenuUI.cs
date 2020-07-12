@@ -25,9 +25,12 @@ public class EquipmentMenuUI : MonoBehaviour
 
     public TMP_Text prayerBonus;
 
+    EquipmentManager equipmentManager;
+
     void Start()
     {
-        EquipmentManager.instance.onEquipmentChangedUI += onEquipmentChanged;
+        equipmentManager = EquipmentManager.instance;
+        equipmentManager.onEquipmentChangedUI += onEquipmentChanged;
     }
 
     void onEquipmentChanged()
@@ -60,4 +63,26 @@ public class EquipmentMenuUI : MonoBehaviour
             return value.ToString();
     }
 
+    public void SaveEquipment()
+    {
+        SaveSystem.SaveEquipment();
+
+    }
+
+    public void LoadEquipment()
+    {
+        EquipmentData data = SaveSystem.LoadEquipment();
+        List<string> itemsToEquip = new List<string>();
+
+        for (int i = 0; i < data.equipment.Length; i++)
+        {
+            if (data.equipment[i] != null)
+            {
+                equipmentManager.Equip(Resources.Load(data.equipmentSlot[i]) as Equipment, false);
+                DropdownManager.instance.LoadEquipment(data.equipment[i]);
+            }
+        }
+
+        
+    }
 }
