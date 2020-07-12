@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e31d596d2c4ba4c4c94b2a1b2e5280ad, type: 3}
+  m_Name: Armadyl Chestplate
+  m_EditorClassIdentifier: 
+  name: Armadyl Chestplate
+  icon: {fileID: 21300000, guid: 7bfd65bb5bf4bda428d404fbcbebfd79, type: 3}
+  isDefaultItem: 0
+  assignedSlot: 0
+  equipSlot: 4
+  stabAtk: -7
+  slashAtk: -7
+  crushAtk: -7
+  magicAtk: -15
+  rangeAtk: 33
+  stabDef: 56
+  slashDef: 48
+  crushDef: 61
+  magicDef: 70
+  rangeDef: 57
+  meleeStr: 0
+  rangeStr: 0
+  magicStr: 0
+  prayerBonus: 1

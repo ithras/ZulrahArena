@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935bbadce19c0df44b08427dd40b329c, type: 3}
+  m_Name: AntiVenom
+  m_EditorClassIdentifier: 
+  name: AntiVenom Potion
+  icon: {fileID: 21300000, guid: 6cd54babc8331c040a6ffedc3ad3a199, type: 3}
+  isDefaultItem: 0
+  assignedSlot: 0
+  dose4: {fileID: 21300000, guid: 6cd54babc8331c040a6ffedc3ad3a199, type: 3}
+  dose3: {fileID: 21300000, guid: 2990c9bb795cb6142bf0b448bdea525f, type: 3}
+  dose2: {fileID: 21300000, guid: ee9f446d744524e4ba5fc858036920c4, type: 3}
+  dose1: {fileID: 21300000, guid: aa91706016eb674499846df66730cf33, type: 3}
+  hasDuration: 1
+  type: 0
+  doses: 4
