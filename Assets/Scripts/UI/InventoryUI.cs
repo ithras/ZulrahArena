@@ -29,16 +29,6 @@ public class InventoryUI : MonoBehaviour
             inventory.Add(item);
         }
 
-        inventory.Add(new Potion(prayerPot));
-        inventory.Add(new Potion(prayerPot));
-        inventory.Add(new Potion(rangingPot));
-        inventory.Add(new Potion(rangingPot));
-        inventory.Add(new Potion(magicPot));
-        inventory.Add(new Potion(magicPot));
-        inventory.Add(new Potion(bastionPot));
-        inventory.Add(new Potion(bastionPot));
-        inventory.Add(new Potion(antiVenomPot));
-        inventory.Add(new Potion(antiVenomPot));
     }
 
     void UpdateUI()

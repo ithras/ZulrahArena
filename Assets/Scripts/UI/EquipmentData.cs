@@ -15,8 +15,8 @@ public class EquipmentData
             if(EquipmentManager.instance.currentEquipment[i] != null)
             {
                 equipment[i] = EquipmentManager.instance.currentEquipment[i].name;
-                equipmentSlot[i] = "Equipment/" + EquipmentManager.instance.currentEquipment[i].equipSlot.ToString() + "/" + EquipmentManager.instance.currentEquipment[i].name;
-                Debug.Log(equipmentSlot[i]);
+                equipmentSlot[i] = EquipmentManager.instance.currentEquipment[i].equipSlot.ToString();
+                //Debug.Log(equipmentSlot[i]);
             }
         }
     }

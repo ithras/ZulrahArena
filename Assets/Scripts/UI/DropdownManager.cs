@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using TMPro;
+using NaughtyAttributes;
 
 public class DropdownManager : MonoBehaviour
 {
@@ -10,101 +11,60 @@ public class DropdownManager : MonoBehaviour
 
 	[Header("Equipment Panel")]
     public GameObject equipmentUI;
-    public TMP_Dropdown ammoDropdown;
-    public TMP_Dropdown amuletDropdown;
-    public TMP_Dropdown bootsDropdown;
-    public TMP_Dropdown capeDropdown;
-    public TMP_Dropdown chestDropdown;
-    public TMP_Dropdown glovesDropdown;
-    public TMP_Dropdown helmetDropdown;
-    public TMP_Dropdown legsDropdown;
-    public TMP_Dropdown offhandDropdown;
-    public TMP_Dropdown ringDropdown;
-    public TMP_Dropdown weaponDropdown;
+
+    public List<TMP_Dropdown> EquipmentDropdownValue = new List<TMP_Dropdown>();
+    public List<string> EquipmentDropdownKey = new List<string>();
+    public Dictionary<string, TMP_Dropdown> EquipmentDropdownMap = new Dictionary<string, TMP_Dropdown>();
+    public Dictionary<string, Dictionary<string, Item>> EquipmentMap { get; private set; }
 
     [Header("Inventory Panel")]
     public GameObject inventoryUI;
-    public TMP_Dropdown foodDropdown;
-    public TMP_Dropdown potionsDropdown;
-    public TMP_Dropdown amuletInventoryDropdown;
-    public TMP_Dropdown bootsInventoryDropdown;
-    public TMP_Dropdown capeInventoryDropdown;
-    public TMP_Dropdown chestInventoryDropdown;
-    public TMP_Dropdown glovesInventoryDropdown;
-    public TMP_Dropdown helmetInventoryDropdown;
-    public TMP_Dropdown legsInventoryDropdown;
-    public TMP_Dropdown weaponInventoryDropdown;
-
-    public Dictionary<string, Item> ammoMap { get; private set; }
-    public Dictionary<string, Item> amuletMap { get; private set; }
-    public Dictionary<string, Item> bootsMap { get; private set; }
-    public Dictionary<string, Item> capeMap { get; private set; }
-    public Dictionary<string, Item> chestMap { get; private set; }
-    public Dictionary<string, Item> glovesMap { get; private set; }
-    public Dictionary<string, Item> helmetMap { get; private set; }
-    public Dictionary<string, Item> legsMap { get; private set; }
-    public Dictionary<string, Item> offhandMap { get; private set; }
-    public Dictionary<string, Item> ringMap { get; private set; }
-    public Dictionary<string, Item> weaponMap { get; private set; }
-    public Dictionary<string, Item> foodMap { get; private set; }
-    public Dictionary<string, Item> potionsMap { get; private set; }
+    public List<TMP_Dropdown> InventoryDropdownValue = new List<TMP_Dropdown>();
+    public List<string> InventoryDropdownKey = new List<string>();
+    public Dictionary<string, TMP_Dropdown> InventoryDropdownMap = new Dictionary<string, TMP_Dropdown>();
+    public Dictionary<string, Dictionary<string, Item>> InventoryMap { get; private set; }
 
     private void Awake()
     {
         instance = this;
+        EquipmentMap = new Dictionary<string, Dictionary<string, Item>>();
+        InventoryMap = new Dictionary<string, Dictionary<string, Item>>();
 
-        ammoMap = new Dictionary<string, Item>();
-        amuletMap = new Dictionary<string, Item>();
-        bootsMap = new Dictionary<string, Item>();
-        capeMap = new Dictionary<string, Item>();
-        chestMap = new Dictionary<string, Item>();
-        glovesMap = new Dictionary<string, Item>();
-        helmetMap = new Dictionary<string, Item>();
-        offhandMap = new Dictionary<string, Item>();
-        legsMap = new Dictionary<string, Item>();
-        ringMap = new Dictionary<string, Item>();
-        weaponMap = new Dictionary<string, Item>();
-        foodMap = new Dictionary<string, Item>();
-        potionsMap = new Dictionary<string, Item>();
+        for (int i = 0; i < EquipmentDropdownKey.Count; i++)
+        {
+            EquipmentDropdownMap.Add(EquipmentDropdownKey[i], EquipmentDropdownValue[i]);
+            EquipmentMap.Add(EquipmentDropdownKey[i], new Dictionary<string, Item>());
+        }
 
-        loadItemsToMap(ammoMap, "Equipment/Ammo");
-        loadItemsToMap(amuletMap, "Equipment/Amulet");
-        loadItemsToMap(bootsMap, "Equipment/Boots");
-        loadItemsToMap(capeMap, "Equipment/Cape");
-        loadItemsToMap(chestMap, "Equipment/Chest");
-        loadItemsToMap(glovesMap, "Equipment/Gloves");
-        loadItemsToMap(helmetMap, "Equipment/Helmet");
-        loadItemsToMap(legsMap, "Equipment/Legs");
-        loadItemsToMap(offhandMap, "Equipment/Offhand");
-        loadItemsToMap(ringMap, "Equipment/Ring");
-        loadItemsToMap(weaponMap, "Equipment/Weapon");
-        loadItemsToMap(foodMap, "Food");
-        loadItemsToMap(potionsMap, "Potions");
+        for (int i = 0; i < InventoryDropdownKey.Count; i++)
+        {
+            InventoryDropdownMap.Add(InventoryDropdownKey[i], InventoryDropdownValue[i]);
+            InventoryMap.Add(InventoryDropdownKey[i], new Dictionary<string, Item>());
+        }
+
+        foreach(var key in EquipmentMap)
+        {
+            loadItemsToMap(key.Value, key.Key);
+        }
+
+        foreach(var key in InventoryMap)
+        {
+            loadItemsToMap(key.Value, key.Key);
+        }
+
     }
 
     void Start()
     {
-        StartCoroutine(loadItemsToDropdown(ammoDropdown, ammoMap));
-        StartCoroutine(loadItemsToDropdown(amuletDropdown, amuletMap));
-        StartCoroutine(loadItemsToDropdown(bootsDropdown, bootsMap));
-        StartCoroutine(loadItemsToDropdown(capeDropdown, capeMap));
-        StartCoroutine(loadItemsToDropdown(chestDropdown, chestMap));
-        StartCoroutine(loadItemsToDropdown(glovesDropdown, glovesMap));
-        StartCoroutine(loadItemsToDropdown(helmetDropdown, helmetMap));
-        StartCoroutine(loadItemsToDropdown(offhandDropdown, offhandMap));
-        StartCoroutine(loadItemsToDropdown(legsDropdown, legsMap));
-        StartCoroutine(loadItemsToDropdown(ringDropdown, ringMap));
-        StartCoroutine(loadItemsToDropdown(weaponDropdown, weaponMap));
-        StartCoroutine(loadItemsToDropdown(foodDropdown, foodMap));
-        StartCoroutine(loadItemsToDropdown(potionsDropdown, potionsMap));
-        StartCoroutine(loadItemsToDropdown(amuletInventoryDropdown, amuletMap));
-        StartCoroutine(loadItemsToDropdown(bootsInventoryDropdown, bootsMap));
-        StartCoroutine(loadItemsToDropdown(capeInventoryDropdown, capeMap));
-        StartCoroutine(loadItemsToDropdown(chestInventoryDropdown, chestMap));
-        StartCoroutine(loadItemsToDropdown(glovesInventoryDropdown, glovesMap));
-        StartCoroutine(loadItemsToDropdown(helmetInventoryDropdown, helmetMap));
-        StartCoroutine(loadItemsToDropdown(legsInventoryDropdown, legsMap));
-        StartCoroutine(loadItemsToDropdown(weaponInventoryDropdown, weaponMap));
+        foreach(var key in EquipmentDropdownMap)
+        {
+            StartCoroutine(loadItemsToDropdown(key.Value, EquipmentMap[key.Key]));
+        }
+
+        foreach(var key in InventoryDropdownMap)
+        {
+            StartCoroutine(loadItemsToDropdown(key.Value, InventoryMap[key.Key]));
+        }
     }
 
     public IEnumerator loadItemsToDropdown(TMP_Dropdown dropdown, Dictionary<string, Item> map)
@@ -144,43 +104,17 @@ public class DropdownManager : MonoBehaviour
 
     void dropdownValueChanged(TMP_Dropdown dropdown, Dictionary<string, Item> map)
     {
+        Debug.Log(dropdown.captionText.text);
         map[dropdown.captionText.text].Use(false);
     }
 
-    public void LoadEquipment(string itemToEquip)
+    
+    public void LoadEquipment(string itemToEquip, string slotToEquip)
     {
-        if(ammoMap.ContainsKey(itemToEquip))
-            ammoDropdown.value = ammoDropdown.options.IndexOf(ammoDropdown.options.Find(option => option.text == itemToEquip));
+        var map = EquipmentDropdownMap[slotToEquip];
 
-        else if(amuletMap.ContainsKey(itemToEquip))
-            amuletDropdown.value = amuletDropdown.options.IndexOf(amuletDropdown.options.Find(option => option.text == itemToEquip));
-
-        else if (bootsMap.ContainsKey(itemToEquip))
-            bootsDropdown.value = bootsDropdown.options.IndexOf(bootsDropdown.options.Find(option => option.text == itemToEquip));
-
-        else if (capeMap.ContainsKey(itemToEquip))
-            capeDropdown.value = capeDropdown.options.IndexOf(capeDropdown.options.Find(option => option.text == itemToEquip));
-
-        else if (chestMap.ContainsKey(itemToEquip))
-            chestDropdown.value = chestDropdown.options.IndexOf(chestDropdown.options.Find(option => option.text == itemToEquip));
-
-        else if (helmetMap.ContainsKey(itemToEquip))
-            helmetDropdown.value = helmetDropdown.options.IndexOf(helmetDropdown.options.Find(option => option.text == itemToEquip));
-
-        else if (glovesMap.ContainsKey(itemToEquip))
-            glovesDropdown.value = glovesDropdown.options.IndexOf(glovesDropdown.options.Find(option => option.text == itemToEquip));
-
-        else if (legsMap.ContainsKey(itemToEquip))
-            legsDropdown.value = legsDropdown.options.IndexOf(legsDropdown.options.Find(option => option.text == itemToEquip));
-
-        else if (offhandMap.ContainsKey(itemToEquip))
-            offhandDropdown.value = offhandDropdown.options.IndexOf(offhandDropdown.options.Find(option => option.text == itemToEquip));
-
-        else if (ringMap.ContainsKey(itemToEquip))
-            ringDropdown.value = ringDropdown.options.IndexOf(ringDropdown.options.Find(option => option.text == itemToEquip));
-
-        else if (weaponMap.ContainsKey(itemToEquip))
-            weaponDropdown.value = weaponDropdown.options.IndexOf(weaponDropdown.options.Find(option => option.text == itemToEquip));
-
+        if (EquipmentMap.ContainsKey(itemToEquip))
+            map.value = map.options.IndexOf(map.options.Find(option => option.text == itemToEquip));
     }
+    
 }

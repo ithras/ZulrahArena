@@ -10,6 +10,7 @@ public class Food : Item
     public override void Use(bool inGame)
     {
         base.Use(inGame);
-        ConsumableManager.instance.player.healPlayer(healPoints);
+        if(inGame)
+            ConsumableManager.instance.player.healPlayer(healPoints);
     }
 }

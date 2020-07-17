@@ -13,6 +13,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     {
         item = newItem;
         icon.sprite = item.icon;
+        icon.color = new Color(1f, 1f, 1f, 1f);
         icon.enabled = true;
     }
 
@@ -20,6 +21,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     {
         item = null;
         icon.sprite = null;
+        icon.color = new Color(1f, 1f, 1f, 0f);
         icon.enabled = false;
     }
 

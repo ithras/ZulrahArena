@@ -78,8 +78,8 @@ public class EquipmentMenuUI : MonoBehaviour
         {
             if (data.equipment[i] != null)
             {
-                equipmentManager.Equip(Resources.Load(data.equipmentSlot[i]) as Equipment, false);
-                DropdownManager.instance.LoadEquipment(data.equipment[i]);
+                equipmentManager.Equip(Resources.Load(data.equipmentSlot[i] + "/" + data.equipment[i]) as Equipment, false);
+                DropdownManager.instance.LoadEquipment(data.equipment[i], data.equipmentSlot[i]);
             }
         }
 
