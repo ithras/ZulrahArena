@@ -6,23 +6,32 @@ using UnityEngine.EventSystems;
 
 public class InventorySlot : MonoBehaviour, IDropHandler
 {
-    public Image icon;
+    public Canvas canvas;
+    public GameObject ItemPrefab;
     Item item;
+    GameObject itemGO;
 
     public void AddItem(Item newItem)
     {
+        if (item != null)
+            return;
+
+        itemGO = Instantiate(ItemPrefab);
+        itemGO.transform.SetParent(transform);
+        itemGO.transform.localScale = Vector3.one;
+        itemGO.transform.localPosition  = new Vector3(20f, -20f, 0f);
+        itemGO.GetComponent<DragDrop>().canvas = canvas;
+        Image icon = itemGO.GetComponentInChildren<Image>();
+
         item = newItem;
         icon.sprite = item.icon;
         icon.color = new Color(1f, 1f, 1f, 1f);
-        icon.enabled = true;
     }
 
     public void ClearSlot ()
     {
         item = null;
-        icon.sprite = null;
-        icon.color = new Color(1f, 1f, 1f, 0f);
-        icon.enabled = false;
+        Destroy(itemGO);
     }
 
     public void UseItem()
