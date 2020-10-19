@@ -10,6 +10,7 @@ public class DropdownSlot : MonoBehaviour
 
     public void AddToInventory()
     {
-        Inventory.instance.Add(DropdownManager.instance.InventoryMap[key][assignedDropdown.captionText.text]);
+        if (assignedDropdown.captionText.text != "Select . . .")
+            Inventory.instance.Add(DropdownManager.instance.InventoryMap[key][assignedDropdown.captionText.text]);
     }
 }

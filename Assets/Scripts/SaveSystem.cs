@@ -16,6 +16,18 @@ public static class SaveSystem
         stream.Close();
     }
 
+    public static void SaveInventory()
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/inventory.zulrah";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        InventoryData data = new InventoryData();
+
+        formatter.Serialize(stream, data);
+        stream.Close();
+    }
+
     public static EquipmentData LoadEquipment()
     {
         string path = Application.persistentDataPath + "/equipment.zulrah";
@@ -26,6 +38,27 @@ public static class SaveSystem
             FileStream stream = new FileStream(path, FileMode.Open);
 
             EquipmentData data = formatter.Deserialize(stream) as EquipmentData;
+            stream.Close();
+
+            return data;
+        }
+        else
+        {
+            Debug.LogError("Save file not found in " + path);
+            return null;
+        }
+    }
+
+    public static InventoryData LoadInventory()
+    {
+        string path = Application.persistentDataPath + "inventory.zulrah";
+
+        if (File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+
+            InventoryData data = formatter.Deserialize(stream) as InventoryData;
             stream.Close();
 
             return data;

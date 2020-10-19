@@ -72,7 +72,6 @@ public class EquipmentMenuUI : MonoBehaviour
     public void LoadEquipment()
     {
         EquipmentData data = SaveSystem.LoadEquipment();
-        List<string> itemsToEquip = new List<string>();
 
         for (int i = 0; i < data.equipment.Length; i++)
         {
