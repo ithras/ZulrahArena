@@ -5,8 +5,11 @@ using UnityEngine.AI;
 public class PlayerController : MonoBehaviour
 {
     public LayerMask layer;
+    public LayerMask zulrah;
     public NavMeshAgent agent;
     public Camera mainCam;
+    public Transform shootingPoint;
+    public GameObject projectilePrefab;
 
     void Start()
     {
@@ -28,6 +31,29 @@ public class PlayerController : MonoBehaviour
             {
                 agent.SetDestination(hit.point);
             }
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, zulrah))
+            {
+                hit.collider.GetComponent<ZulrahHealth>();
+                Shoot(hit.collider.transform);
+                //DO Something
+            }
+                
         }
+
+    }
+
+    void Shoot(Transform target)
+    {
+        GameObject projectileGO = Instantiate(projectilePrefab, shootingPoint.position, shootingPoint.rotation);
+        Projectile projectile = projectileGO.GetComponent<Projectile>();
+        projectileGO.transform.parent = transform;
+
+        if (projectile != null)
+        {
+            projectile.seekTarget = true;
+            projectile.Seek(target);
+        }
+
     }
 }
