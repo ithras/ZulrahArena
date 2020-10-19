@@ -238,7 +238,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 234067724}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1, z: -1.5}
+  m_LocalPosition: {x: 0.7, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1042316658}
@@ -858,8 +858,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootingPoint: {fileID: 234067725}
-  trail: {fileID: 8044921716361597798, guid: 311b680d53bd2bb4cbace7250eac8f18, type: 3}
   speed: 10
+  projectilePrefab: {fileID: 6227789050291615460, guid: 4d8c330560ab26942822736dd822b4c6,
+    type: 3}
 --- !u!1 &1393232254
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,13 +7,19 @@ public class Projectile : MonoBehaviour
     public float speed = 60f;
     private Transform target;
     public bool seekTarget;
+    public Transform shootingPoint;
     public Vector3 shootingDir;
     public Vector3 direction;
+
+    void Start()
+    {
+        shootingDir = shootingPoint.forward;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (target == null)
+        if (target == null && seekTarget)
         {
             Destroy(gameObject);
             return;
@@ -34,6 +40,7 @@ public class Projectile : MonoBehaviour
             Action(target);
             return;
         }
+        
 
         transform.Translate(direction.normalized * distanceThisFrame, Space.World);
     }
@@ -61,5 +68,10 @@ public class Projectile : MonoBehaviour
     public void Seek(Transform target)
     {
         this.target = target;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        Destroy(gameObject);
     }
 }

@@ -27,18 +27,18 @@ public class PlayerController : MonoBehaviour
             RaycastHit hit;
             Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, layer))
-            {
-                agent.SetDestination(hit.point);
-            }
-
+            
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, zulrah))
             {
                 hit.collider.GetComponent<ZulrahHealth>();
                 Shoot(hit.collider.transform);
                 //DO Something
             }
-                
+            else if (Physics.Raycast(ray, out hit, Mathf.Infinity, layer))
+            {
+                agent.SetDestination(hit.point);
+            }
+
         }
 
     }

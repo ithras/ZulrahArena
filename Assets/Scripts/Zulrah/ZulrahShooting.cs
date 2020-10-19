@@ -6,9 +6,8 @@ using UnityEngine.Animations;
 public class ZulrahShooting : MonoBehaviour
 {
     public Transform shootingPoint;
-    public TrailRenderer trail;
     public float speed = 10f;
-    private TrailRenderer trailObj;
+    public GameObject projectilePrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -21,12 +20,8 @@ public class ZulrahShooting : MonoBehaviour
     {
         if(Input.GetButtonDown("Fire1"))
         {
-            Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hit, Mathf.Infinity);
-            if (hit.collider != null)
-            {
-                Debug.Log("GEORGE YOU KILLED THE " + hit.collider.name);
-            }
+            GameObject projectileGO = Instantiate(projectilePrefab, shootingPoint.position, shootingPoint.rotation);
+            projectileGO.GetComponent<Projectile>().shootingPoint = shootingPoint;
         }
     }
-
 }
