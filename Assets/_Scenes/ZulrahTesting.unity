@@ -121,6 +121,113 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &77977373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 77977378}
+  - component: {fileID: 77977377}
+  - component: {fileID: 77977376}
+  - component: {fileID: 77977375}
+  - component: {fileID: 77977374}
+  m_Layer: 0
+  m_Name: Zulrah
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &77977374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77977373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3bb42fe4e054ba4b8140cac530a6804, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Florencia: {fileID: 1042316658}
+--- !u!65 &77977375
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77977373}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &77977376
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77977373}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 7602069228072a44bb8e2a060bc40e51, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &77977377
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77977373}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &77977378
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77977373}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 47.49, y: 0.93, z: 28.91}
+  m_LocalScale: {x: 1.3605685, y: 1, z: 1.1167326}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &148589484
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,11 +820,11 @@ GameObject:
   - component: {fileID: 1042316656}
   - component: {fileID: 1042316655}
   - component: {fileID: 1042316659}
-  - component: {fileID: 1042316660}
-  - component: {fileID: 1042316661}
   - component: {fileID: 1042316662}
+  - component: {fileID: 1042316661}
+  - component: {fileID: 1042316660}
   m_Layer: 0
-  m_Name: Florencio
+  m_Name: Florencia
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -791,7 +898,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1042316654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 689660104}
@@ -826,10 +933,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1042316654}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3bb42fe4e054ba4b8140cac530a6804, type: 3}
+  m_Script: {fileID: 11500000, guid: 22bf05c311fd1de48bbc33c761bf3e92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  shootingPoint: {fileID: 234067725}
+  speed: 10
+  projectilePrefab: {fileID: 6227789050291615460, guid: 4d8c330560ab26942822736dd822b4c6,
+    type: 3}
 --- !u!114 &1042316661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -839,12 +949,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1042316654}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7358094cf1d8564cbeb48ae8c23420b, type: 3}
+  m_Script: {fileID: 11500000, guid: 67c6994b2978f2249ac5dafd96fe041b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MouseSensitivity: 5
-  smoothing: 1
-  zulrah: {fileID: 1042316658}
+  moveSpeed: 3
 --- !u!114 &1042316662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -854,13 +962,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1042316654}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75e203ff46411a542aa092862c31845c, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e479fe533134ae4982799f1de30545c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingPoint: {fileID: 234067725}
-  speed: 10
-  projectilePrefab: {fileID: 6227789050291615460, guid: 4d8c330560ab26942822736dd822b4c6,
-    type: 3}
+  MouseSensitivity: 5
+  smoothing: 1
+  Florencio: {fileID: 1042316658}
 --- !u!1 &1393232254
 GameObject:
   m_ObjectHideFlags: 0
