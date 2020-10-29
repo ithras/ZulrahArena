@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
@@ -49,9 +50,16 @@ public static class SaveSystem
         }
     }
 
+    public static void LoadInGameEquipment()
+    {
+        EquipmentData data = LoadEquipment();
+        int numSlots = Enum.GetNames(typeof(EquipmentSlot)).Length;
+        EquipmentManager.instance.currentEquipment = new Equipment[numSlots];
+    }
+
     public static InventoryData LoadInventory()
     {
-        string path = Application.persistentDataPath + "inventory.zulrah";
+        string path = Application.persistentDataPath + "/inventory.zulrah";
 
         if (File.Exists(path))
         {

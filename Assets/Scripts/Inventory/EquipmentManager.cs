@@ -11,7 +11,15 @@ public class EquipmentManager : MonoBehaviour
 
     void Awake()
     {
+        if (instance != null)
+        {
+            Debug.LogWarning("More tha one instance of Equipment found!");
+            return;
+        }
         instance = this;
+        int numSlots = Enum.GetNames(typeof(EquipmentSlot)).Length;
+        currentEquipment = new Equipment[numSlots];
+        SaveSystem.LoadEquipment();
     }
     #endregion
 
@@ -25,8 +33,6 @@ public class EquipmentManager : MonoBehaviour
     void Start()
     {
         inventory = Inventory.instance;
-        int numSlots = System.Enum.GetNames(typeof(EquipmentSlot)).Length;
-        currentEquipment = new Equipment[numSlots];
     }
 
     public string Equip(Equipment newItem, bool inGame)
