@@ -16,7 +16,7 @@ public class EquipmentData
             {
                 equipment[i] = EquipmentManager.instance.currentEquipment[i].name;
                 equipmentSlot[i] = EquipmentManager.instance.currentEquipment[i].equipSlot.ToString();
-                //Debug.Log(equipmentSlot[i]);
+                Debug.Log(equipmentSlot[i]);
             }
         }
     }

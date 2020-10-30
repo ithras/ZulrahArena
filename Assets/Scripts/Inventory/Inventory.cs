@@ -15,6 +15,7 @@ public class Inventory : MonoBehaviour
             return;
         }
         instance = this;
+        SaveSystem.LoadInventory();
     }
 
     #endregion
