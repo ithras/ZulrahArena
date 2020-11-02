@@ -5,11 +5,10 @@ using UnityEngine;
 
 public class FlorenciaHealth : MonoBehaviour
 {
-    public CharacterStats stats;
+    public PlayerStats stats;
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame

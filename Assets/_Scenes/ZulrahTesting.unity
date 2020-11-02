@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 77977375}
   - component: {fileID: 77977374}
   - component: {fileID: 77977379}
+  - component: {fileID: 77977380}
   m_Layer: 0
   m_Name: Zulrah
   m_TagString: Player
@@ -155,6 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Florencia: {fileID: 1042316658}
+  stats: {fileID: 0}
 --- !u!65 &77977375
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -245,6 +247,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &77977380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77977373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bef411e0a96e79c4b963cd02404e0ad9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 0}
 --- !u!1 &148589484
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,9 +852,11 @@ GameObject:
   - component: {fileID: 1042316656}
   - component: {fileID: 1042316655}
   - component: {fileID: 1042316659}
+  - component: {fileID: 1042316665}
   - component: {fileID: 1042316662}
   - component: {fileID: 1042316661}
   - component: {fileID: 1042316660}
+  - component: {fileID: 1042316664}
   - component: {fileID: 1042316663}
   m_Layer: 0
   m_Name: Florencia
@@ -1002,6 +1019,81 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1042316664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042316654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae820bb85b7beda48890e66b7f0a68e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 1042316665}
+--- !u!114 &1042316665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042316654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f6518b3000f204f9df235ea9d77eb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defence:
+    baseValue: 0
+    potion: 0
+    prayer: 1
+    other: 1
+  magic:
+    baseValue: 0
+    potion: 0
+    prayer: 1
+    other: 1
+  ranged:
+    baseValue: 0
+    potion: 0
+    prayer: 1
+    other: 1
+  maxHitpoints: 1000
+  currentHitpoints: 40
+  stabAtk:
+    baseValue: 0
+  slashAtk:
+    baseValue: 0
+  crushAtk:
+    baseValue: 40
+  magicAtk:
+    baseValue: 0
+  rangeAtk:
+    baseValue: 0
+  stabDef:
+    baseValue: 0
+  slashDef:
+    baseValue: 0
+  crushDef:
+    baseValue: 0
+  magicDef:
+    baseValue: 0
+  rangeDef:
+    baseValue: 0
+  meleeStr:
+    baseValue: 0
+  rangeStr:
+    baseValue: 0
+  magicStr:
+    baseValue: 0
+  prayerBonus:
+    baseValue: 0
+  maxPrayerPoints: 0
+  rangedAtkBonus: 0
+  rangedStrBonus: 0
+  activeProtect: 0
+  antiVenomActive: 0
 --- !u!1 &1393232254
 GameObject:
   m_ObjectHideFlags: 0

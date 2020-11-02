@@ -39,7 +39,7 @@ public class ZulrahMovement : MonoBehaviour
     
     void OnCollisionEnter(Collision collision)
     {
-        FlorenciaHealth fh = gameObject.GetComponent<FlorenciaHealth>();
+        FlorenciaHealth fh = collision.gameObject.GetComponent<FlorenciaHealth>();
         fh.stats.TakeDamage(AttackOfDeath);
     }
 }
