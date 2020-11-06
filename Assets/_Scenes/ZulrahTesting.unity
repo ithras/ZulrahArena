@@ -133,9 +133,10 @@ GameObject:
   - component: {fileID: 77977377}
   - component: {fileID: 77977376}
   - component: {fileID: 77977375}
-  - component: {fileID: 77977374}
   - component: {fileID: 77977379}
+  - component: {fileID: 77977374}
   - component: {fileID: 77977380}
+  - component: {fileID: 77977381}
   m_Layer: 0
   m_Name: Zulrah
   m_TagString: Player
@@ -156,7 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Florencia: {fileID: 1042316658}
-  stats: {fileID: 0}
+  stats: {fileID: 77977381}
 --- !u!65 &77977375
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -259,7 +260,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bef411e0a96e79c4b963cd02404e0ad9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 0}
+  stats: {fileID: 77977381}
+--- !u!114 &77977381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77977373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ccd2266b50f2b540a25d5f92f625bca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defence:
+    baseValue: 0
+    potion: 0
+    prayer: 1
+    other: 1
+  magic:
+    baseValue: 0
+    potion: 0
+    prayer: 1
+    other: 1
+  ranged:
+    baseValue: 0
+    potion: 0
+    prayer: 1
+    other: 1
+  maxHitpoints: 50
+  currentHitpoints: 40
+  stabAtk:
+    baseValue: 0
+  slashAtk:
+    baseValue: 0
+  crushAtk:
+    baseValue: 0
+  magicAtk:
+    baseValue: 0
+  rangeAtk:
+    baseValue: 0
+  stabDef:
+    baseValue: 0
+  slashDef:
+    baseValue: 0
+  crushDef:
+    baseValue: 0
+  magicDef:
+    baseValue: 0
+  rangeDef:
+    baseValue: 0
+  meleeStr:
+    baseValue: 0
+  rangeStr:
+    baseValue: 0
+  magicStr:
+    baseValue: 0
+  prayerBonus:
+    baseValue: 0
 --- !u!1 &148589484
 GameObject:
   m_ObjectHideFlags: 0

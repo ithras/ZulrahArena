@@ -15,7 +15,8 @@ public class ZulrahMovement : MonoBehaviour
     void Start()
     {
         //Florencia = gameObject.GetComponent<CharacterController>();
-        stats = gameObject.GetComponent<ZulrahHealth>().stats;
+        //Dude??? WTF
+        //stats = gameObject.GetComponent<ZulrahHealth>().stats;
     }
 
     // Update is called once per frame
@@ -39,7 +40,10 @@ public class ZulrahMovement : MonoBehaviour
     
     void OnCollisionEnter(Collision collision)
     {
-        FlorenciaHealth fh = collision.gameObject.GetComponent<FlorenciaHealth>();
-        fh.stats.TakeDamage(AttackOfDeath);
+        if(collision.gameObject.tag == "Player") 
+        { 
+            FlorenciaHealth fh = collision.gameObject.GetComponent<FlorenciaHealth>();
+            fh.stats.TakeDamage(AttackOfDeath);
+        }
     }
 }
