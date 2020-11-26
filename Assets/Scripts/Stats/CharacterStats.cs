@@ -34,15 +34,7 @@ public class CharacterStats : MonoBehaviour
         currentHitpoints = maxHitpoints;
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            TakeDamage(10);
-        }
-    }
-
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, ProjectileType type)
     {
         currentHitpoints -= damage;
         currentHitpoints = Mathf.Clamp(currentHitpoints, 0, maxHitpoints);

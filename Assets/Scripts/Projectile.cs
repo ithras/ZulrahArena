@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ProjectileType { Ranged, Magic }
 public class Projectile : MonoBehaviour
 {
     public float speed = 60f;
@@ -10,9 +11,20 @@ public class Projectile : MonoBehaviour
     public Transform shootingPoint;
     public Vector3 shootingDir;
     public Vector3 direction;
+    private int damage;
+    public PlayerStats stats;
+    public ProjectileType Type;
 
     void Start()
     {
+        if (Type == ProjectileType.Magic)
+            damage = Random.Range(0, stats.MagicMaxHit + 1);
+
+        else if (Type == ProjectileType.Ranged)
+            damage = Random.Range(0, stats.RangedMaxHit + 1);
+
+        Type = stats.atkType;
+
         shootingDir = shootingPoint.forward;
     }
 
@@ -47,22 +59,23 @@ public class Projectile : MonoBehaviour
 
     public virtual void Action(Transform target)
     {
-        ZulrahHealth zulrahHealth = target.GetComponent<ZulrahHealth>();
-
-        PlayerHealth playerHealth = target.GetComponent<PlayerHealth>();
-
-        if (zulrahHealth != null)
+        PlayerStats targetStats = target.GetComponent<PlayerStats>();
+        float accuracy = -1;
+        if(Type == ProjectileType.Ranged)
         {
-            //Do Something
+            if (stats.RangedAtkRoll > targetStats.RangedDefenceRoll)
+                accuracy = 1 - ((targetStats.RangedDefenceRoll + 2) / (2 * (stats.RangedAtkRoll + 1)));
 
-            Destroy(gameObject);
+            else if (targetStats.RangedDefenceRoll > stats.RangedAtkRoll)
+                accuracy = stats.RangedAtkRoll / (2 * (targetStats.RangedDefenceRoll+1));
         }
-        else if (playerHealth != null)
-        {
-            //Do something
 
-            Destroy(gameObject);
-        }
+        float random = Random.Range(0f, 1f);
+
+        if( accuracy >= random )
+            target.GetComponent<PlayerStats>().TakeDamage(damage, Type);
+        
+        Destroy(gameObject);
     }
 
     public void Seek(Transform target)

@@ -30,7 +30,6 @@ public class PlayerController : MonoBehaviour
             
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, zulrah))
             {
-                hit.collider.GetComponent<ZulrahHealth>();
                 Shoot(hit.collider.transform);
                 //DO Something
             }
@@ -51,6 +50,7 @@ public class PlayerController : MonoBehaviour
 
         if (projectile != null)
         {
+            projectile.stats = GetComponent<PlayerStats>();
             projectile.seekTarget = true;
             projectile.Seek(target);
         }

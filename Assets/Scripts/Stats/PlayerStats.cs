@@ -25,6 +25,8 @@ public class PlayerStats : CharacterStats
 
     public bool antiVenomActive = false;
 
+    public ProjectileType atkType;
+
     void Awake()
     {
         currentHitpoints = maxHitpoints;
@@ -114,6 +116,15 @@ public class PlayerStats : CharacterStats
 
         if (newItem != null)
         {
+            if (newItem.equipSlot == EquipmentSlot.Weapon)
+            {
+                if (newItem.magicAtk > newItem.rangeAtk)
+                    atkType = ProjectileType.Magic;
+
+                else if (newItem.rangeAtk > newItem.magicAtk)
+                    atkType = ProjectileType.Ranged;
+            }
+
             int newItemEquipSlot = (int)newItem.equipSlot;
             
             stabDef.AddModifier(newItem.stabDef, newItemEquipSlot);
