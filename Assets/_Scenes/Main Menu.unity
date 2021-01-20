@@ -32198,7 +32198,6 @@ GameObject:
   - component: {fileID: 1337798300}
   - component: {fileID: 1337798301}
   - component: {fileID: 1337798302}
-  - component: {fileID: 1337798303}
   - component: {fileID: 1337798304}
   - component: {fileID: 1337798305}
   m_Layer: 0
@@ -32295,68 +32294,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentEquipment: []
---- !u!114 &1337798303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1337798299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68f6518b3000f204f9df235ea9d77eb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defence:
-    baseValue: 0
-    potion: 0
-    prayer: 1
-    other: 1
-  magic:
-    baseValue: 0
-    potion: 0
-    prayer: 1
-    other: 1
-  ranged:
-    baseValue: 0
-    potion: 0
-    prayer: 1
-    other: 1
-  maxHitpoints: 0
-  currentHitpoints: 0
-  stabAtk:
-    baseValue: 0
-  slashAtk:
-    baseValue: 0
-  crushAtk:
-    baseValue: 0
-  magicAtk:
-    baseValue: 0
-  rangeAtk:
-    baseValue: 0
-  stabDef:
-    baseValue: 0
-  slashDef:
-    baseValue: 0
-  crushDef:
-    baseValue: 0
-  magicDef:
-    baseValue: 0
-  rangeDef:
-    baseValue: 0
-  meleeStr:
-    baseValue: 0
-  rangeStr:
-    baseValue: 0
-  magicStr:
-    baseValue: 0
-  prayerBonus:
-    baseValue: 0
-  maxPrayerPoints: 0
-  rangedAtkBonus: 0
-  rangedStrBonus: 0
-  activeProtect: 0
-  antiVenomActive: 0
 --- !u!114 &1337798304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32369,7 +32306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d777c22554c1e64d85d84b566ac386c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statsBonuses: {fileID: 1337798303}
+  statsBonuses: {fileID: 0}
   stabAtk: {fileID: 1682038622}
   slashAtk: {fileID: 2009129419}
   crushAtk: {fileID: 880192328}

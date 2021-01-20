@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
-using UnityEngine.Events;
 
 public class EquipmentManager : MonoBehaviour
 {
@@ -17,7 +15,7 @@ public class EquipmentManager : MonoBehaviour
             return;
         }
         instance = this;
-        int numSlots = Enum.GetNames(typeof(EquipmentSlot)).Length;
+        int numSlots = System.Enum.GetNames(typeof(EquipmentSlot)).Length;
         currentEquipment = new Equipment[numSlots];
         SaveSystem.LoadEquipment();
     }
@@ -25,8 +23,8 @@ public class EquipmentManager : MonoBehaviour
 
     public Equipment[] currentEquipment;
 
-    public event Action<Equipment, Equipment> onEquipmentChanged;
-    public event Action onEquipmentChangedUI;
+    public event System.Action<Equipment, Equipment> onEquipmentChanged;
+    public event System.Action onEquipmentChangedUI;
 
     Inventory inventory;
 

@@ -228,6 +228,7 @@ GameObject:
   - component: {fileID: 8711428}
   - component: {fileID: 8711429}
   - component: {fileID: 8711430}
+  - component: {fileID: 8711431}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -316,7 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5108d472b21af3a4fb6cd078efc9906b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1452377851}
+  player: {fileID: 0}
   timerSeconds: 5
 --- !u!114 &8711430
 MonoBehaviour:
@@ -330,8 +331,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eae51b5acaf857242b794e7973272bb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1452377851}
+  player: {fileID: 0}
   dummy: {fileID: 932617937}
+--- !u!114 &8711431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8711425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0ba05094079a9a4c86aaf4bb7f389c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minionPrefab: {fileID: 6755514354261435078, guid: 74528c5819be6c2439421533f3aec139,
+    type: 3}
+  minionLocations: []
+  venomPrefab: {fileID: 8189527853281158777, guid: a6043e87f8c421b4a93799f686a84e85,
+    type: 3}
+  venomLocations: []
 --- !u!224 &8885795 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 857654244551784993, guid: 0bf0b447a8dbd184cbaf644bb4236f78,
@@ -544,7 +563,6 @@ GameObject:
   - component: {fileID: 34749562}
   - component: {fileID: 34749561}
   - component: {fileID: 34749560}
-  - component: {fileID: 34749564}
   m_Layer: 11
   m_Name: Zulrah
   m_TagString: Untagged
@@ -626,18 +644,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &34749564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 34749559}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bef411e0a96e79c4b963cd02404e0ad9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &55758443
 GameObject:
   m_ObjectHideFlags: 0
@@ -4037,7 +4043,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prayerParent: {fileID: 55758444}
-  player: {fileID: 1452377851}
+  player: {fileID: 0}
 --- !u!222 &824446944
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6806,7 +6812,6 @@ GameObject:
   - component: {fileID: 1452377848}
   - component: {fileID: 1452377850}
   - component: {fileID: 1452377849}
-  - component: {fileID: 1452377851}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -6874,68 +6879,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1452377851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1452377847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68f6518b3000f204f9df235ea9d77eb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defence:
-    baseValue: 70
-    potion: 0
-    prayer: 1
-    other: 1
-  magic:
-    baseValue: 75
-    potion: 0
-    prayer: 1
-    other: 1
-  ranged:
-    baseValue: 75
-    potion: 0
-    prayer: 1
-    other: 1
-  maxHitpoints: 99
-  currentHitpoints: 0
-  stabAtk:
-    baseValue: 0
-  slashAtk:
-    baseValue: 0
-  crushAtk:
-    baseValue: 0
-  magicAtk:
-    baseValue: 0
-  rangeAtk:
-    baseValue: 0
-  stabDef:
-    baseValue: 0
-  slashDef:
-    baseValue: 0
-  crushDef:
-    baseValue: 0
-  magicDef:
-    baseValue: 0
-  rangeDef:
-    baseValue: 0
-  meleeStr:
-    baseValue: 0
-  rangeStr:
-    baseValue: 0
-  magicStr:
-    baseValue: 0
-  prayerBonus:
-    baseValue: 0
-  maxPrayerPoints: 44
-  rangedAtkBonus: 0
-  rangedStrBonus: 0
-  activeProtect: 0
-  antiVenomActive: 0
 --- !u!224 &1476064861 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 857654244551784993, guid: 0bf0b447a8dbd184cbaf644bb4236f78,

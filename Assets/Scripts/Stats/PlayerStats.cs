@@ -3,37 +3,29 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-public class PlayerStats : CharacterStats
+public class PlayerStats : GeneralStats
 {
+    public Stat prayerBonus;
     public int maxPrayerPoints;
+
     public int CurrentPrayerPoints { get; private set; }
 
     public float rangedAtkBonus;
     public float rangedStrBonus;
-
-    public int RangedAtkRoll { get; private set; }
-    public int RangedMaxHit { get; private set; }
-    public int MagicAtkRoll { get; private set; }
-    public int MagicMaxHit { get; private set; }
-    public int StabDefenceRoll { get; private set; }
-    public int SlashDefenceRoll { get; private set; }
-    public int CrushDefenceRoll { get; private set; }
-    public int MagicDefenceRoll { get; private set; }
-    public int RangedDefenceRoll { get; private set; }
-
+    
     public PrayerProtectTypes activeProtect;
 
     public bool antiVenomActive = false;
 
     public ProjectileType atkType;
 
-    void Awake()
+    override protected void Awake()
     {
-        currentHitpoints = maxHitpoints;
+        base.Awake();
         CurrentPrayerPoints = maxPrayerPoints;
     }
 
-    void Start()
+    override protected void Start()
     {
         EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
 
@@ -45,35 +37,26 @@ public class PlayerStats : CharacterStats
         
         activeProtect = PrayerProtectTypes.None;
 
-        OnBonusChanged();
+        base.Start();
     }
 
-    void OnBonusChanged()
+    protected override void OnBonusChanged()
     {
         Debug.Log("Bonuses");
         string weaponName = "";
         if (EquipmentManager.instance.currentEquipment[(int)EquipmentSlot.Weapon] != null)
             weaponName = EquipmentManager.instance.currentEquipment[(int)EquipmentSlot.Weapon].name;
 
-        RangedAtkRoll = (ranged.effectiveValue(true) + 8) * ( rangeAtk.GetValue() + 64 );
-        RangedMaxHit = Mathf.FloorToInt(1.3f + (ranged.effectiveValue(false) / 10f) + (rangeStr.GetValue() / 80f) + ((ranged.effectiveValue(true) * rangeStr.GetValue()) / 640f));
-        MagicAtkRoll = magic.effectiveValue(true) * (magicAtk.GetValue() + 64);
-
         if (weaponName == "Trident of the Seas")
             MagicMaxHit = Mathf.FloorToInt(((magic.baseValue / 3f) - 5) * (1 + (magicStr.GetValue() / 100f)));
 
         else if (weaponName == "Trident of the Swamp")
-            MagicMaxHit = Mathf.FloorToInt(((magic.baseValue / 3f) - 2) * (1 + (magicStr.GetValue() /100f)));
+            MagicMaxHit = Mathf.FloorToInt(((magic.baseValue / 3f) - 2) * (1 + (magicStr.GetValue() / 100f)));
 
         else
             MagicMaxHit = 0;
 
-        StabDefenceRoll = defence.effectiveValue(true) * (stabDef.GetValue() + 64);
-        SlashDefenceRoll = defence.effectiveValue(true) * (slashDef.GetValue() + 64);
-        CrushDefenceRoll = defence.effectiveValue(true) * (crushDef.GetValue() + 64);
-
-        RangedDefenceRoll = defence.effectiveValue(true) * (rangeDef.GetValue() + 64);
-        MagicDefenceRoll = Mathf.FloorToInt((magic.effectiveValue(true) * 0.7f) + (defence.effectiveValue(true) * 0.3f) + 8) * (magicDef.GetValue() + 64);
+        base.OnBonusChanged();
     }
 
     void OnBonusChangedRigour()
